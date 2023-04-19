@@ -10,13 +10,26 @@ const TodoContextProvider = ({ children }) => {
   );
 
   const [todoData, setTodoData] = useState([]);
+  const [userTodoList, setUserTodoList] = useState([]);
 
   useEffect(() => {
     setTodoData(dataList?.data?.todos);
+    setUserTodoList(dataList?.data?.todos);
   }, [dataList]);
 
+  function todoBtnHandler(todoList) {
+    const updatedUserTodoList = [...userTodoList].map((data) => {
+      return data.title === todoList.title
+        ? { ...data, isCompleted: !todoList.isCompleted }
+        : data;
+    });
+    setUserTodoList(updatedUserTodoList);
+  }
+
   return (
-    <TodoContext.Provider value={{ todoData, errorList, isLoading }}>
+    <TodoContext.Provider
+      value={{ todoData, userTodoList, todoBtnHandler, errorList, isLoading }}
+    >
       {children}
     </TodoContext.Provider>
   );

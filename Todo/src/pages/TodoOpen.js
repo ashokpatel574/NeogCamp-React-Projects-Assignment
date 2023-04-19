@@ -1,47 +1,43 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+
 import { TodoContext } from "../context/TodoContextProvider";
 
 const TodoOpen = () => {
-  const { todoData, errorList, isLoading } = useContext(TodoContext);
+  const { userTodoList, errorList, isLoading } = useContext(TodoContext);
 
-  const openTodoData = todoData?.filter(({ isCompleted }) => !isCompleted);
+  const openTodoData = userTodoList?.filter(({ isCompleted }) => !isCompleted);
+
   return (
-    <div>
-      <article>
-        <ul>
-          {isLoading ? (
-            <h2>Loading...</h2>
-          ) : errorList ? (
-            <p>
-              {errorList.status} {errorList.message}
-            </p>
-          ) : (
-            openTodoData?.length > 0 &&
-            openTodoData?.map((productItem) => {
-              const { id, title, description, isCompleted } = productItem;
-              return (
-                <li key={id.toString()}>
-                  <h3> {title}</h3>
-                  <p> {description}</p>
-                  <p>status: {isCompleted ? "Done" : "Not Done"}</p>
-                  <p>
-                    <Link to={`/product/${id}`}>Expand Todo</Link>
-                  </p>
-                  <div className="todo_btn-container">
-                    <button
-                      onClick={() => todoBtnHandler(productItem)}
-                      className="btn btn_todo"
-                    >
-                      Mark as Done
-                    </button>
-                  </div>
-                </li>
-              );
-            })
-          )}
-        </ul>
-      </article>
-    </div>
+    <article>
+      <h2 className="total_todos-count">
+        Total Open todos: {openTodoData?.length > 0 ? openTodoData.length : 0}
+      </h2>
+      <ul className="todo_list-container">
+        {isLoading ? (
+          <h2>Loading...</h2>
+        ) : errorList ? (
+          <p>
+            {errorList.status} {errorList.message}
+          </p>
+        ) : (
+          openTodoData?.length > 0 &&
+          openTodoData?.map((productItem) => {
+            const { id, title, description, isCompleted } = productItem;
+            return (
+              <li key={id.toString()}>
+                <h3> {title}</h3>
+                <p> {description}</p>
+                <p>status: {isCompleted ? "Done" : "Not Done"}</p>
+                <p>
+                  <Link to={`/todo/${id}`}>Expand Todo</Link>
+                </p>
+              </li>
+            );
+          })
+        )}
+      </ul>
+    </article>
   );
 };
 

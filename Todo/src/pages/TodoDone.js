@@ -1,14 +1,19 @@
 import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+
 import { TodoContext } from "../context/TodoContextProvider";
 
 const TodoDone = () => {
-  const { todoData, errorList, isLoading } = useContext(TodoContext);
+  const { userTodoList, errorList, isLoading } = useContext(TodoContext);
 
-  const doneTodoData = todoData?.filter(({ isCompleted }) => isCompleted);
+  const doneTodoData = userTodoList?.filter(({ isCompleted }) => isCompleted);
 
   return (
     <article>
-      <ul>
+      <h2 className="total_todos-count">
+        Total Done todos: {doneTodoData?.length > 0 ? doneTodoData.length : 0}
+      </h2>
+      <ul className="todo_list-container">
         {isLoading ? (
           <h2>Loading...</h2>
         ) : errorList ? (
@@ -25,16 +30,8 @@ const TodoDone = () => {
                 <p> {description}</p>
                 <p>status: {isCompleted ? "Done" : "Not Done"}</p>
                 <p>
-                  <Link to={`/product/${id}`}>Expand Todo</Link>
+                  <Link to={`/todo/${id}`}>Expand Todo</Link>
                 </p>
-                <div className="todo_btn-container">
-                  <button
-                    onClick={() => todoBtnHandler(productItem)}
-                    className="btn btn_todo"
-                  >
-                    Mark as Done
-                  </button>
-                </div>
               </li>
             );
           })

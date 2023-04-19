@@ -1,3 +1,13 @@
+/*
+Create a Todo App in React with different routes for:
+
+Summary of Done and Open Todos page - fakeFetch has been provided. List all the Todos on this page.
+Done Todos page
+Open Todos page
+Page for Individual Todos item to show details of each Todo.
+
+*/
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -23,12 +33,14 @@ const App = () => {
       <BrowserRouter>
         <TodoContextProvider>
           <Header />
-          <Routes>
-            <Route path="/" element={<TodoHome />} />
-            <Route path="/todo/:todoDetails" element={<TodoDetails />} />
-            <Route path="/todoDone" element={<TodoDone />} />
-            <Route path="/todoOpen" element={<TodoOpen />} />
-          </Routes>
+          <main className="todo_container">
+            <Routes>
+              <Route path="/" element={<TodoHome />} />
+              <Route path="/todo/:todoId" element={<TodoDetails />} />
+              <Route path="/todoDone" element={<TodoDone />} />
+              <Route path="/todoOpen" element={<TodoOpen />} />
+            </Routes>
+          </main>
         </TodoContextProvider>
       </BrowserRouter>
     </>
