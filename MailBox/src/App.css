@@ -1,0 +1,156 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  max-width: 75rem;
+  margin: 0 auto;
+  min-height: 100vh;
+  font-size: 1.75rem;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+/* Header Container */
+
+.header_container {
+  font-size: 2rem;
+  text-align: left;
+  padding: 2rem 2rem;
+}
+
+/* Email Box  Container */
+
+.emailBox_container {
+  display: flex;
+  gap: 2rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 2rem 2rem;
+}
+
+/* Side Bar Menu Container */
+
+.sideBar_container {
+  width: 15%;
+  min-height: 50rem;
+  padding: 2rem 1.5rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.sideBar_container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: 1px soldi #ccc;
+}
+
+/* Mail Box Container */
+
+.mailBox_container,
+.inboxDetails_container,
+.sentMail_Details-container {
+  width: 100%;
+  min-height: 50rem;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 2rem 4rem;
+}
+
+/* Inbox Container */
+
+.inbox_container,
+.sentMail_container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.inbox_container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-top: 2px solid #ccc;
+}
+
+.inbox_container h2,
+.sentMail_container h2 {
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #ccc;
+}
+
+.btn {
+  padding: 0.2rem 0.4rem;
+  border: none;
+  border: 1px solid #bbb;
+}
+
+.btn-markRead {
+  margin-left: 1.5rem;
+}
+
+.btn-markRead:hover {
+  font-weight: bold;
+}
+
+/* Sent Mails Container */
+
+.sentEmails_container ul {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 2px solid #ccc;
+}
+
+.sentEmails_container p {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+/* Media Query */
+
+@media (max-width: 30em) {
+  .header_container {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .emailBox_container {
+    gap: 1rem;
+
+    padding: 1.5rem 1.5rem;
+  }
+
+  .sideBar_container {
+    width: 20%;
+    padding: 1rem 1rem;
+  }
+
+  .mailBox_container,
+  .inboxDetails_container,
+  .sentMail_Details-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .sentEmails_container p {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+  }
+}
